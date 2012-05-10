@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load markup %}
+
+{% block title %}
+Upcoming Events - Bomber Jackson Does Some
+{% endblock %}
+
+{% block content %}
+    <article>
+    <h1>Upcoming Events</h1>
+    {% if events_list %}
+        <table>
+            <thead>
+                <tr>
+                    <td>Venue</td>
+                    <td>Date</td>
+                    <td>Details</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in events_list %}
+                <tr>
+                    <td><a href="{{ event.url }}" target="_blank">{{ event.location }}</a></td>
+                    <td>{{ event.date }}</td>
+                    <td>{{ event.description|markdown }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>There are no upcoming events.</p>
+    {% endif %}
+    </article>  
+
+{% endblock %}

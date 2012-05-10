@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load markup %}
+
+{% block title %}
+Bomber Jackson Does Some
+{% endblock %}
+
+{% block content %}
+
+    {% if posts_list %}
+        {% for post in posts_list %}
+            <article>
+                <h1>{{ post.title }}</h1>
+                {{ post.created }}
+                {{ post.body|markdown }}
+            </article>
+        {% endfor %}
+    {% else %}
+        <article>
+            <p>There is no content.</p>
+        </article>
+    {% endif %}
+
+{% endblock %}

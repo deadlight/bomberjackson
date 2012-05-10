@@ -1,0 +1,99 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en-gb"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en-gb"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en-gb"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en-gb"> <!--<![endif]-->
+{% load reviews_tags %}
+{% load markup %}
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>{% block title %}{% endblock %}</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+
+	<link type="text/plain" rel="author" href="http://www.bomberjacksondoessome.com/humans.txt" />
+
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/style.css">
+
+    <!--[if lt IE 10]>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/libs/PIE/PIE.js"></script>
+    <![endif]-->
+
+	<script src="{{ STATIC_URL }}js/libs/modernizr-2.5.3.min.js"></script>
+</head>
+
+<body class="{{ page_name }}">
+
+    <nav>
+        <ul>
+	        <li><a href="{% url home %}" class="home">Home</a></li>
+	        <li><a href="{% url book %}" class="book">Book</a></li>
+	        <li><a href="{% url events %}" class="events">Events</a></li>
+	        <li><a href="{% url author %}" class="author">Author</a></li>
+	        <li><a href="{% url contact %}" class="contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1><span class="highlighted-letters">Bo</span>m<span class="highlighted-letters">b</span>er Jackson <span class="lowlighted-letters">Does Some</span></h1>
+        <h2><span class="lowlighted-letters">A novel by</span> <span class="highlighted-letters">Bob</span> Boyton</h2>
+    </header>
+
+    <aside class="aux">
+        <secion class="buyTheBook">
+            <a href="" class="cover"><img src="{{ STATIC_URL }}/images/cover-small.jpg" alt="Bomber Jackson Does Some - A novel by Bob Boyton" /></a>
+            <a href="{% url buy %}" class="buyLink">Buy the Book</a>
+        </section>
+
+        <section class="reviews">
+            {% get_reviews 3 %}
+        </section>
+
+        <section class="social">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-via="BobbyBoyton">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            <g:plusone size="medium" annotation="inline" width="120"></g:plusone>
+            <script type="text/javascript">
+              window.___gcfg = {lang: 'en-GB'};
+
+              (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                po.src = 'https://apis.google.com/js/plusone.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+              })();
+            </script>
+            <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+                fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+            </script>
+        </section>
+    </aside>
+
+    <div role="main">
+    {% block content %}{% endblock %}
+    </div>
+
+    <footer>
+        <p>All content copyright &copy; Bob Boyton {% now "Y" %}.</p>
+        <p>Website built &amp; maintained by <a href="mailt:karl@deadlight.net">Karl Williams</a> - <a href="http://www.deadlight.net">deadlight.net</a></p>
+    </footer>
+
+    <script src="js/plugins.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+	    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+	    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+	    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	    s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+
+</body>
+
+</html>

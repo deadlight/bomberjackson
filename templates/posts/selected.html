@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load markup %}
+
+{% block title %}
+{{ post.title }} - Bomber Jackson Does Some
+{% endblock %}
+
+{% block content %}
+    <article>
+        <h1>{{ post.title }}</h1>
+        {% if image %}
+        <img src="/{{ image.image }}" alt="{{ image.title }}" title="{{ image.title }}" />
+        {% endif %}
+        {{ post.body|markdown }}
+    </article>
+{% endblock %}
